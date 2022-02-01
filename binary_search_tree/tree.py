@@ -13,8 +13,8 @@ class Tree:
     def __init__(self):
         self.root = None
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def add(self, key, value = None):
         if self.root == None:
             self.root = TreeNode(key, value)
@@ -31,9 +31,8 @@ class Tree:
             current_node.right = self._add(current_node.right, key, value)
         return current_node
 
-    
-    # Time Complexity:
-    # Space Complexity: 
+    # Time Complexity: O(log n)
+    # Space Complexity: O(1)
     def find(self, key):
         if self.root == None:
             return None
@@ -47,42 +46,40 @@ class Tree:
                 current = current.left
         return None
 
-    
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def inorder(self):
         values =[]
         
         if self.root == None:
             return values
 
-        return self.in_order(self.root, values)
+        return self._in_order(self.root, values)
 
-    def in_order(self, node, values):
+    def _in_order(self, node, values):
         if node == None:
             return 
 
-        self.in_order(node.left, values)
+        self._in_order(node.left, values)
         values.append({
             'key': node.key,
             'value': node.value
         })
-        self.in_order(node.right, values)
+        self._in_order(node.right, values)
 
         return values
 
-    
-    # Time Complexity:
-    # Space Complexity: 
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def preorder(self):
         values = []
 
         if self.root == None:
             return values
 
-        return self.pre_order(self.root, values)
+        return self._pre_order(self.root, values)
 
-    def pre_order(self, node, values):
+    def _pre_order(self, node, values):
         if node == None:
             return
 
@@ -90,28 +87,27 @@ class Tree:
             'key': node.key,
             'value': node.value
         })
-        self.pre_order(node.left, values)
-        self.pre_order(node.right, values)
+        self._pre_order(node.left, values)
+        self._pre_order(node.right, values)
         
         return values
 
-    
-    # Time Complexity:
-    # Space Complexity: 
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def postorder(self):
         values = []
 
         if self.root == None:
             return values
 
-        return self.post_order(self.root, values)
+        return self._post_order(self.root, values)
 
-    def post_order(self, node, values):
+    def _post_order(self, node, values):
         if node == None:
             return 
 
-        self.post_order(node.left, values)
-        self.post_order(node.right, values)
+        self._post_order(node.left, values)
+        self._post_order(node.right, values)
         values.append({
             'key': node.key,
             'value': node.value
@@ -119,9 +115,8 @@ class Tree:
 
         return values
 
-    
-    # Time Complexity:
-    # Space Complexity: 
+    # Time Complexity: O(n)
+    # Space Complexity: O(log n) 
     def height(self):
         if self.root == None:
             return 0
@@ -137,10 +132,9 @@ class Tree:
 
         return (1 + max(l, r))
 
-    
 #   # Optional Method
-#   # Time Complexity:
-#   # Space Complexity:
+#   # Time Complexity: O(n)
+#   # Space Complexity: O(n)
     def bfs(self):
         values = []
         queue = []
@@ -159,6 +153,7 @@ class Tree:
                 "value": current_node.value,
             })
         return values
+
 
 #   # Useful for printing
     def to_s(self):
