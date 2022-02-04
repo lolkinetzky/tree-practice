@@ -13,8 +13,9 @@ class Tree:
     def __init__(self):
         self.root = None
 
-    # Time Complexity: O(n)
-    # Space Complexity: O(1)
+    # Time/ Space Complexity for unbalanced tree: O(n) 
+    #Time/ Space Complexity for unbalanced tree: O(log n)
+    
     def add(self, key, value = None):
         if self.root == None:
             self.root = TreeNode(key, value)
@@ -116,7 +117,7 @@ class Tree:
         return values
 
     # Time Complexity: O(n)
-    # Space Complexity: O(log n) 
+    # Space Complexity: O(log n) (balanced) or O(n) for unbalanced
     def height(self):
         if self.root == None:
             return 0
@@ -133,8 +134,10 @@ class Tree:
         return (1 + max(l, r))
 
 #   # Optional Method
-#   # Time Complexity: O(n)
+#   # Time Complexity: O(n^2) 
 #   # Space Complexity: O(n)
+##  to-do: rewrite below using dequeue or linked list for linear time
+
     def bfs(self):
         values = []
         queue = []
